@@ -30,20 +30,6 @@ public class StudentController {
     @Autowired
     private final StudentService studentService;
 
-//    @GetMapping(value = "/users")
-//    public ResponseEntity<Object> fetchAllStudents() {
-//	try {
-//	    List<Student> result = studentService.getAllStudents();
-//	    return ResponseHandler.generateResponse("Ecco la lista dei studenti!", HttpStatus.OK, result);
-//	} catch (Exception e) {
-//	    return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
-//	}
-//    }
-
-//    public List<Student> fetchAllStudents() {
-//	return studentService.getAllStudents();
-//    }
-
     @GetMapping
     public ResponseEntity<Object> getStudents(@Nullable @RequestParam String id, @Nullable @RequestParam String email) {
 	try {
@@ -54,6 +40,7 @@ public class StudentController {
 		result.add(studentService.getStudentByEmail(email));
 	    } else {
 		result = studentService.getAllStudents();
+		return ResponseHandler.generateResponse("Ecco la lista!", HttpStatus.OK, result);
 	    }
 
 	    return ResponseHandler.generateResponse("Ecco lo studente!", HttpStatus.OK, result);
@@ -61,16 +48,6 @@ public class StudentController {
 	    return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.NO_CONTENT, null);
 	}
     }
-
-//    @GetMapping("/users/{email}")
-//    public ResponseEntity<Object> getStudentByEmail(@PathVariable String email) {
-//	try {
-//	    Student result = studentService.getStudentByEmail(email);
-//	    return ResponseHandler.generateResponse("Ecco lo studente con questa email!", HttpStatus.OK, result);
-//	} catch (Exception e) {
-//	    return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
-//	}
-//    }
 
     @PostMapping
     public ResponseEntity<Object> insertStudent(@RequestBody Student s) {
