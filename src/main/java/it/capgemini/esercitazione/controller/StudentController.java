@@ -1,7 +1,6 @@
-package esercitazione.controller;
+package it.capgemini.esercitazione.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import esercitazione.model.Student;
-import esercitazione.response.ResponseHandler;
-import esercitazione.service.StudentService;
+import it.capgemini.esercitazione.model.Student;
+import it.capgemini.esercitazione.response.ResponseHandler;
+import it.capgemini.esercitazione.service.StudentService;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -42,11 +41,21 @@ public class StudentController {
 //	return studentService.getAllStudents();
 //    }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Object> getStudentsById(@PathVariable String id) {
 	try {
-	    Optional<Student> result = studentService.getStudentsById(id);
+	    Student result = studentService.getStudentsById(id);
 	    return ResponseHandler.generateResponse("Ecco lo studente!", HttpStatus.OK, result);
+	} catch (Exception e) {
+	    return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+	}
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Object> getStudentByEmail(@PathVariable String email) {
+	try {
+	    Student result = studentService.getStudentByEmail(email);
+	    return ResponseHandler.generateResponse("Ecco lo studente con questa email!", HttpStatus.OK, result);
 	} catch (Exception e) {
 	    return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
 	}
@@ -67,7 +76,7 @@ public class StudentController {
     public ResponseEntity<Object> updateStudent(@RequestBody Student s, @PathVariable String id) {
 	try {
 
-	    Student result = studentService.updateFirstAndLastNameStudents(s, id);
+	    Student result = studentService.updateStudent(s, id);
 
 	    return ResponseHandler.generateResponse("Studente aggiornato con successo", HttpStatus.OK, result);
 

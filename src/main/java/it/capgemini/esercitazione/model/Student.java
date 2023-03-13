@@ -1,4 +1,4 @@
-package esercitazione.model;
+package it.capgemini.esercitazione.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

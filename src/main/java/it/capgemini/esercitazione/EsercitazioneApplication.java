@@ -1,4 +1,4 @@
-package esercitazione;
+package it.capgemini.esercitazione;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,10 +12,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import esercitazione.model.Address;
-import esercitazione.model.Gender;
-import esercitazione.model.Student;
-import esercitazione.repository.StudentRepository;
+import it.capgemini.esercitazione.model.Address;
+import it.capgemini.esercitazione.model.Gender;
+import it.capgemini.esercitazione.model.Student;
+import it.capgemini.esercitazione.repository.StudentRepository;
 
 @SpringBootApplication
 public class EsercitazioneApplication {

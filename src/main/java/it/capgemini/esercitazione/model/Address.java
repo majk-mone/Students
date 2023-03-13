@@ -1,4 +1,4 @@
-package esercitazione.model;
+package it.capgemini.esercitazione.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

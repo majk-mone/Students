@@ -1,4 +1,4 @@
-package esercitazione.response;
+package it.capgemini.esercitazione.response;
 
 import java.util.HashMap;
 import java.util.Map;
